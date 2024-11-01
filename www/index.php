@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>Ranjit Swain | Docker class</title>
+  <title>Leehoang | PHP_test</title>
 
   <meta charset="utf-8">
 
@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="container">
-    <?php echo "<h1>Hi! I'm Ranjit</h1>"; ?>
-	<?php echo "<h3>This is Docker Compose Class!</h3>"; ?>
+    <?php echo "<h1>Hi! I'm Leehoang</h1>"; ?>
+	<?php echo "<h3>This is PHP MySql test!</h3>"; ?>
 
     <?php
     $conn = mysqli_connect('db', 'ranjit', 'ranjit', "myDb");
