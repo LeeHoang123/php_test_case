@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-    <?php echo "<h1>Hi! I'm Leehoang</h1>"; ?>
+    <?php echo "<h1>Hi! I'm Leehoang B2013534</h1>"; ?>
 	<?php echo "<h3>This is PHP MySql test!</h3>"; ?>
 
     <?php
