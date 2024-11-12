@@ -15,7 +15,7 @@
 	<?php echo "<h3>This is PHP MySql test!</h3>"; ?>
 
     <?php
-    $conn = mysqli_connect('db', 'ranjit', 'ranjit', "myDb");
+    $conn = mysqli_connect('db', 'leehoang', 'leehoang', "myDb");
     $query = 'SELECT * From Person';
     $result = mysqli_query($conn, $query);
     echo '<table class="table table-striped">';
