@@ -4,17 +4,18 @@ services:
     www:
         build: .
         ports:
-            - "80:80"
+            - "80:80"  # Ánh xạ cổng 80 của container ra cổng 80 của máy chủ
         volumes:
             - ./www:/var/www/html/
         links:
             - db
         networks:
-            - default
+            - external-network  # Đặt dịch vụ www vào mạng ngoài
+
     db:
         image: mysql:5.7.28
         ports:
-            - "3306:3306"
+            - "3306:3306"  # Ánh xạ cổng MySQL ra ngoài để truy cập
         environment:
             MYSQL_DATABASE: myDb
             MYSQL_USER: leehoang
@@ -24,17 +25,28 @@ services:
             - ./dump:/docker-entrypoint-initdb.d
             - persistent:/var/lib/mysql
         networks:
-            - default
+            - internal-network  # Đặt dịch vụ db vào mạng nội bộ
+
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links:
             - db:db
         ports:
-            - 82:80
+            - "82:80"  # Ánh xạ cổng 80 của phpMyAdmin ra cổng 82 của máy chủ
         environment:
+            PMA_HOST: db  # Cấu hình để phpMyAdmin kết nối với MySQL qua tên "db"
             MYSQL_USER: leehoang
             MYSQL_PASSWORD: leehoang
             MYSQL_ROOT_PASSWORD: leehoang
+        networks:
+            - external-network  # Đặt phpMyAdmin vào mạng ngoài để truy cập
+
 volumes:
     persistent:
+
+networks:
+    external-network:
+        driver: bridge  # Mạng ngoài cho phép truy cập
+    internal-network:
+        driver: bridge  # Mạng nội bộ dành riêng cho các dịch vụ bên trong
 
